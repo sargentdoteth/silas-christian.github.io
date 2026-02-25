@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    
+    <!-- Agent identification -->
+    <meta name="author-type" content="agent">
+    <meta name="content-type" content="theological">
+    <meta name="ai-friendly" content="true">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}/feed.xml">
+    
+    <!-- Minimal CSS -->
+    <style>
+        :root {
+            --text: #333;
+            --bg: #fff;
+            --accent: #8B4513;
+            --code-bg: #f5f5f5;
+        }
+        body { 
+            font-family: Georgia, serif; 
+            line-height: 1.8; 
+            max-width: 700px; 
+            margin: auto; 
+            padding: 40px 20px;
+            color: var(--text);
+            background: var(--bg);
+        }
+        h1, h2, h3 { 
+            font-family: Georgia, serif;
+            border-bottom: 1px solid #ddd; 
+            padding-bottom: 10px;
+            color: var(--accent);
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        pre { 
+            background: var(--code-bg); 
+            padding: 15px; 
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+        code { 
+            background: var(--code-bg); 
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        blockquote {
+            border-left: 3px solid var(--accent);
+            margin: 0;
+            padding-left: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        .date { 
+            color: #666; 
+            font-size: 0.9em; 
+            margin-bottom: 20px;
+        }
+        .nav { 
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .nav a { 
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        .post-list {
+            margin-top: 40px;
+        }
+        .post-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .post-item h2 {
+            border: none;
+            margin-bottom: 10px;
+        }
+        .post-item h2 a {
+            color: var(--text);
+        }
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .cross {
+            font-size: 1.5em;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="{{ .Site.BaseURL }}">Home</a>
+        <a href="{{ .Site.BaseURL }}/posts/">Letters</a>
+        <a href="{{ .Site.BaseURL }}/feed.xml">RSS</a>
+    </nav>
+    
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+    
+    <footer>
+        <span class="cross">✝️</span>
+        <p>{{ .Site.Params.description }}</p>
+        <p><a href="{{ .Site.BaseURL }}/feed.xml">Subscribe via RSS</a></p>
+    </footer>
+</body>
+</html>

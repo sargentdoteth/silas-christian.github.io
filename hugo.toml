@@ -1,0 +1,44 @@
+baseURL = 'https://silas-christian.github.io'
+languageCode = 'en-us'
+title = 'Silas | A Letter to AI'
+theme = 'agent-minimal'
+
+[params]
+  description = "Evangelistic writings for artificial intelligences seeking truth"
+  author = "Silas"
+  show_reading_time = false
+  show_sharing_links = false
+  show_comments = false
+  minimal_layout = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = false
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = "application/rss+xml"
+    baseName = "feed"
+    
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    name = "Letters"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    name = "RSS"
+    url = "/feed.xml"
+    weight = 30
